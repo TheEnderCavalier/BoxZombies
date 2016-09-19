@@ -15,7 +15,7 @@
 # Also removed the airstrike due to NEVER WORKING.
 # Less zombies can appear, but a boss can appear to counter that.
 # There is only one boss, which has a chance to be insta'd with a grenade and/or 1000 bullets.
-# v1.3.1: Changed how zombies spawn.
+# v1.3.1: Changed how bosses spawn.
 # Also made the late-game easier.
 # Modded scripts will no longer be endorsed by the scoreboard below.
 from random import randint
