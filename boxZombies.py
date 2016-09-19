@@ -15,9 +15,9 @@
 # Also removed the airstrike due to NEVER WORKING.
 # Less zombies can appear, but a boss can appear to counter that.
 # There is only one boss, which has a chance to be insta'd with a grenade and/or 1000 bullets.
+# v1.3.1: Changed how zombies spawn.
+# Also made the late-game easier.
 # Modded scripts will no longer be endorsed by the scoreboard below.
-# RECORDED HIGHSCORE ALL TIME: NONE
-# RECORDED HIGHSCORE THIS VERSION: NONE
 from random import randint
 import time
 highscore=20
@@ -28,17 +28,17 @@ time.sleep(3)
 print "BOX: ZOMBIE EDITION"
 time.sleep(3)
 print "Highscore: ", highscore
-print "v1.3"
+print "v1.3.1"
 time.sleep(1)
 ammotot=0
 wave=0
 alive=True
+boss=10
 while alive==True:
     wave+=1
     print "Wave", wave
     time.sleep(3)
     x=0
-    boss=0
     boss2=0
     grenade=0
     topaz=0
@@ -117,7 +117,7 @@ while alive==True:
     time.sleep(2)
     topaz+=(100*everstone)+(75*diamond)+(50*emerald)+(20*ruby)+(10*amethyst)+(5*sapphire)
     print "Final worth:", topaz
-    ammo=topaz*int(randint(70,150)/10)
+    ammo=topaz*int((randint(70,150)/10.0)*(1+(0.25*wave)))
     time.sleep(1)
     print "By selling each topaz you gained", ammo, "ammo."
     time.sleep(1)
@@ -125,7 +125,7 @@ while alive==True:
     print "You now have", ammotot, "ammo for your pistol."
     if everstone>=1:
         print "One arms dealer gives you a grenade which should take out a well-sized cluster."
-        grenade=randint(150,250)
+        grenade=(randint(150,250))*2
         ammotot+=grenade
     time.sleep(2)
     print "Zombies are closing in on your location!"
@@ -141,8 +141,8 @@ while alive==True:
         if ammotot<0:
             ammotot=0
         time.sleep(1)
-        boss=randint(0,100)
-        if boss>=90:
+        if wave-boss==0:
+            boss+=1
             print "Out of the smoke, a boss appears!"
             time.sleep(3)
             boss2=randint(1,1)
