@@ -17,7 +17,13 @@
 # There is only one boss, which has a chance to be insta'd with a grenade and/or 1000 bullets.
 # v1.3.1: Changed how bosses spawn.
 # Also made the late-game easier.
-# Modded scripts will no longer be endorsed by the scoreboard below.
+# v1.4: Wow! A major update right after a patch!
+# Added two perks that can majorly affect gameplay upon attaining.
+# There isn't much difference between them.
+# They are Chance+ (much higher gem gain) and Ammo+ (much higher ammo gain).
+# These are designed to make the game a bit more interactive and much easier.
+# v1.4.1: Fixed a crash that killed everything.
+# Modded scripts will no longer be endorsed by the scoreboard.
 from random import randint
 import time
 highscore=20
@@ -28,17 +34,20 @@ time.sleep(3)
 print "BOX: ZOMBIE EDITION"
 time.sleep(3)
 print "Highscore: ", highscore
-print "v1.3.1"
+print "v1.4.1"
 time.sleep(1)
 ammotot=0
 wave=0
 alive=True
 boss=10
+ammo=1
+chance2=1
 while alive==True:
     wave+=1
     print "Wave", wave
     time.sleep(3)
     x=0
+    perk=0
     boss2=0
     grenade=0
     topaz=0
@@ -54,7 +63,7 @@ while alive==True:
     print "The box opens."
     time.sleep(1)
     while x<10:
-        tiernum=randint(1,(999+wave))
+        tiernum=randint(1,((999*chance2)+(wave*chance2)))
         tier=0
         if tiernum>=1000:
             tier=7
@@ -117,7 +126,7 @@ while alive==True:
     time.sleep(2)
     topaz+=(100*everstone)+(75*diamond)+(50*emerald)+(20*ruby)+(10*amethyst)+(5*sapphire)
     print "Final worth:", topaz
-    ammo=topaz*int((randint(70,150)/10.0)*(1+(0.25*wave)))
+    ammo=topaz*int((randint(70,(130*ammo))/10.0)*(1+(0.25*wave)))
     time.sleep(1)
     print "By selling each topaz you gained", ammo, "ammo."
     time.sleep(1)
@@ -176,6 +185,25 @@ while alive==True:
                 if bosskill==1:
                     print "A winner is you!"
                     time.sleep(2)
+                    print "You take a crystal out of its back, which makes you feel stronger."
+                    time.sleep(2)
+                    while True:
+                        print "1: Ammo+"
+                        print "2: Chance+"
+                        perk=raw_input("Choice: ")
+                        if perk=="1" or perk=="2":
+                            if perk=="1":
+                                print "It makes you feel smarter than you were two seconds ago."
+                                ammo+=1
+                                time.sleep(2)
+                                break
+                            else:
+                                print "It makes you feel luckier. The box feels heavier."
+                                chance2+=1
+                                time.sleep(2)
+                                break
+                        else:
+                            perk=0
                 if ammotot<1000:
                     print "The boss slaps you aside, effectively killing you."
                     time.sleep(1)
