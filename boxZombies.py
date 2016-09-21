@@ -23,7 +23,7 @@
 # They are Chance+ (much higher gem gain) and Ammo+ (much higher ammo gain).
 # These are designed to make the game a bit more interactive and much easier.
 # v1.4.1: Fixed a crash that killed everything.
-# Modded scripts will no longer be endorsed by the scoreboard.
+# v1.4.1.1: Made the red boss weaker and not impossible to kill consistently.
 from random import randint
 import time
 highscore=20
@@ -40,11 +40,18 @@ ammotot=0
 wave=0
 alive=True
 boss=10
-ammo=1
+ammo2=1
 chance2=1
 while alive==True:
     wave+=1
     print "Wave", wave
+    if chance2>1 or ammo2>1:
+        time.sleep(2)
+        print "Perks:"
+        if ammo2>1:
+            print "Ammo+ lv", ammo2
+        if chance2>1:
+            print "Chance+ lv", chance2
     time.sleep(3)
     x=0
     perk=0
@@ -126,7 +133,7 @@ while alive==True:
     time.sleep(2)
     topaz+=(100*everstone)+(75*diamond)+(50*emerald)+(20*ruby)+(10*amethyst)+(5*sapphire)
     print "Final worth:", topaz
-    ammo=topaz*int((randint(70,(130*ammo))/10.0)*(1+(0.25*wave)))
+    ammo=topaz*int((randint(700,(1300*ammo2))/100.0))
     time.sleep(1)
     print "By selling each topaz you gained", ammo, "ammo."
     time.sleep(1)
@@ -161,29 +168,24 @@ while alive==True:
                 if grenade>1:
                     print "You throw your grenade."
                     time.sleep(4)
-                    chance=randint(1,3)
-                    if chance>=2:
+                    chance=randint(1,10)
+                    if chance>=3:
                         print "The boss is obliberated by the blast."
                         bosskill=1
                         time.sleep(1)
                     else:
                         print "It explodes, but the boss shrugs it off."
                 time.sleep(2)
-                if bosskill==0 and ammotot>=1000:
-                    print "You shoot 1000 bullets into its forehead."
-                    time.sleep(4)
-                    chance=randint(1,4)
+                if bosskill==0 and ammotot>=500:
+                    print "You shoot 500 bullets into its forehead."
+                    time.sleep(2)
                     if chance>=3:
-                        print "The boss is shot down and falls with a thump."
-                        bosskill=1
-                        time.sleep(2)
-                    else:
-                        print "That doesn't save you from your eventual demise."
-                        alive=False
-                        time.sleep(1)
-                        print "Your dead body is found with", ammotot, "bullets to spare."
+                    print "The boss is shot down and falls with a thump."
+                    bosskill=1
+                    time.sleep(2)
                 if bosskill==1:
                     print "A winner is you!"
+                    boss+=10
                     time.sleep(2)
                     print "You take a crystal out of its back, which makes you feel stronger."
                     time.sleep(2)
@@ -194,7 +196,7 @@ while alive==True:
                         if perk=="1" or perk=="2":
                             if perk=="1":
                                 print "It makes you feel smarter than you were two seconds ago."
-                                ammo+=1
+                                ammo2+=1
                                 time.sleep(2)
                                 break
                             else:
@@ -204,7 +206,7 @@ while alive==True:
                                 break
                         else:
                             perk=0
-                if ammotot<1000:
+                if ammotot<500:
                     print "The boss slaps you aside, effectively killing you."
                     time.sleep(1)
                     print "Your dead body is found with", ammotot, "bullets to spare."
