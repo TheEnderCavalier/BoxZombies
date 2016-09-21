@@ -1,5 +1,7 @@
 # BoxZombies
-A tiny project that I made during my programming class about zombies and colored gems.
+A tiny project that I made during my programming class to reinforce my basic coding skills and also find Github.
+
+BoxZombies is a game about zombies and colored gems.
 Can you get the fabled everstone and set a high score?
 
 In the game, you fight through waves.
