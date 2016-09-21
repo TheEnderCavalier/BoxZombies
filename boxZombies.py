@@ -24,6 +24,7 @@
 # These are designed to make the game a bit more interactive and much easier.
 # v1.4.1: Fixed a crash that killed everything.
 # v1.4.1.1: Made the red boss weaker and not impossible to kill consistently.
+# v1.4.1.2: Made the everstone unattainable without insane waveclear or perks.
 from random import randint
 import time
 highscore=20
@@ -72,9 +73,9 @@ while alive==True:
     while x<10:
         tiernum=randint(1,((999*chance2)+(wave*chance2)))
         tier=0
-        if tiernum>=1000:
+        if tiernum>=4000:
             tier=7
-        elif tiernum>=950:
+        elif tiernum>=1000:
             tier=6
             rare=1
         elif tiernum>=900:
