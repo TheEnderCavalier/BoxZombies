@@ -25,18 +25,27 @@
 # v1.4.1: Fixed a crash that killed everything.
 # v1.4.1.1: Made the red boss weaker and not impossible to kill consistently.
 # v1.4.1.2: Made the everstone unattainable without insane waveclear or perks.
+# v1.4.2: A bit of rebalancing and ANOTHER bugfix. Also, in game instructions.
+# Highscore function removed until online save exists.
+# I hope I can make this a .exe and .app file soon.
+# Diamond now requires a perk.
 from random import randint
 import time
-highscore=20
 print "TheEnderCavalier presents..."
 time.sleep(3)
 print "From Brad Sparks' classroom..."
 time.sleep(3)
 print "BOX: ZOMBIE EDITION"
 time.sleep(3)
-print "Highscore: ", highscore
-print "v1.4.1"
-time.sleep(1)
+print "v1.4.2"
+time.sleep(3)
+print "Each wave, you open the box."
+print "The box gives you gems, which you use to buy ammo."
+print "Then zombies come and try to kill you."
+print "You one-tap them, and if you can one-tap them all, you survive."
+print "Somehow getting an everstone buys you an grenade which can waveclear."
+print "Try to survive a lot of waves for a high score!"
+time.sleep(10)
 ammotot=0
 wave=0
 alive=True
@@ -71,23 +80,23 @@ while alive==True:
     print "The box opens."
     time.sleep(1)
     while x<10:
-        tiernum=randint(1,((999*chance2)+(wave*chance2)))
+        tiernum=randint(1,((499*(chance2))+(wave*(chance2*2))))
         tier=0
         if tiernum>=4000:
             tier=7
         elif tiernum>=1000:
             tier=6
             rare=1
-        elif tiernum>=900:
+        elif tiernum>=500:
             tier=5
             rare=1
-        elif tiernum>=850:
+        elif tiernum>=450:
             tier=4
             rare=1
-        elif tiernum>=800:
+        elif tiernum>=400:
             tier=3
             rare=1
-        elif tiernum>=750:
+        elif tiernum>=350:
             tier=2
             rare=1
         else:
@@ -134,7 +143,7 @@ while alive==True:
     time.sleep(2)
     topaz+=(100*everstone)+(75*diamond)+(50*emerald)+(20*ruby)+(10*amethyst)+(5*sapphire)
     print "Final worth:", topaz
-    ammo=topaz*int((randint(700,(1300*ammo2))/100.0))
+    ammo=topaz*int((randint(800,(1300*ammo2/2))/100.0))
     time.sleep(1)
     print "By selling each topaz you gained", ammo, "ammo."
     time.sleep(1)
@@ -159,6 +168,7 @@ while alive==True:
             ammotot=0
         time.sleep(1)
         if wave-boss==0:
+            time.sleep(2)
             boss+=1
             print "Out of the smoke, a boss appears!"
             time.sleep(3)
@@ -180,7 +190,6 @@ while alive==True:
                 if bosskill==0 and ammotot>=500:
                     print "You shoot 500 bullets into its forehead."
                     time.sleep(2)
-                    if chance>=3:
                     print "The boss is shot down and falls with a thump."
                     bosskill=1
                     time.sleep(2)
@@ -196,7 +205,7 @@ while alive==True:
                         perk=raw_input("Choice: ")
                         if perk=="1" or perk=="2":
                             if perk=="1":
-                                print "It makes you feel smarter than you were two seconds ago."
+                                print "It makes you feel like a better bargainer."
                                 ammo2+=1
                                 time.sleep(2)
                                 break
@@ -228,6 +237,3 @@ while alive==True:
     time.sleep(3)
 print "GAME OVER"
 print "Score: ", wave-1
-if wave-1>highscore:
-    print "NEW HIGHSCORE! Please post a screenshot and reply to an official thread to get added."
-    highscore=wave-1
