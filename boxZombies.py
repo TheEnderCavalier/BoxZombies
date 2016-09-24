@@ -29,6 +29,7 @@
 # Highscore function removed until online save exists.
 # I hope I can make this a .exe and .app file soon.
 # Diamond now requires a perk.
+# v1.4.2.1: Today I did a patch that doesn't break the game from someone else's house.
 from random import randint
 import time
 print "TheEnderCavalier presents..."
@@ -37,7 +38,7 @@ print "From Brad Sparks' classroom..."
 time.sleep(3)
 print "BOX: ZOMBIE EDITION"
 time.sleep(3)
-print "v1.4.2"
+print "v1.4.2.1"
 time.sleep(3)
 print "Each wave, you open the box."
 print "The box gives you gems, which you use to buy ammo."
@@ -143,7 +144,7 @@ while alive==True:
     time.sleep(2)
     topaz+=(100*everstone)+(75*diamond)+(50*emerald)+(20*ruby)+(10*amethyst)+(5*sapphire)
     print "Final worth:", topaz
-    ammo=topaz*int((randint(800,(1300*ammo2/2))/100.0))
+    ammo=topaz*int((randint(800,(1300*ammo2))/100.0))
     time.sleep(1)
     print "By selling each topaz you gained", ammo, "ammo."
     time.sleep(1)
