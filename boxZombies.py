@@ -29,7 +29,9 @@
 # Highscore function removed until online save exists.
 # I hope I can make this a .exe and .app file soon.
 # Diamond now requires a perk.
-# v1.4.2.1: Today I did a patch that doesn't break the game from someone else's house.
+# v1.4.2.1: Added two perks (Damage+ and Power+).
+# They are currently unattainable, but will be from the planned blue boss.
+# Today, I'm really lazy to design.
 from random import randint
 import time
 print "TheEnderCavalier presents..."
@@ -38,7 +40,7 @@ print "From Brad Sparks' classroom..."
 time.sleep(3)
 print "BOX: ZOMBIE EDITION"
 time.sleep(3)
-print "v1.4.2.1"
+print "v1.4.2"
 time.sleep(3)
 print "Each wave, you open the box."
 print "The box gives you gems, which you use to buy ammo."
@@ -53,6 +55,8 @@ alive=True
 boss=10
 ammo2=1
 chance2=1
+damage2=1
+power2=1
 while alive==True:
     wave+=1
     print "Wave", wave
@@ -144,7 +148,7 @@ while alive==True:
     time.sleep(2)
     topaz+=(100*everstone)+(75*diamond)+(50*emerald)+(20*ruby)+(10*amethyst)+(5*sapphire)
     print "Final worth:", topaz
-    ammo=topaz*int((randint(800,(1300*ammo2))/100.0))
+    ammo=topaz*int((randint(800,(1300*ammo2/2))/100.0))
     time.sleep(1)
     print "By selling each topaz you gained", ammo, "ammo."
     time.sleep(1)
@@ -152,13 +156,13 @@ while alive==True:
     print "You now have", ammotot, "ammo for your pistol."
     if everstone>=1:
         print "One arms dealer gives you a grenade which should take out a well-sized cluster."
-        grenade=(randint(150,250))*2
+        grenade=(randint(500,1000))*power2
         ammotot+=grenade
     time.sleep(2)
     print "Zombies are closing in on your location!"
     time.sleep(2)
-    zombie=int(((randint(500,2000)/10.0)*(wave)))
-    print "On closer inspection, you see that", zombie, "zombies have appeared."
+    zombie=int(((randint(500,2000)/10.0)*(wave))/(damage2))
+    print "On closer inspection, you see that", (zombie*damage2), "zombies have appeared."
     time.sleep(2)
     if ammotot>=zombie:
         print "You have successfully countered the horde!"
