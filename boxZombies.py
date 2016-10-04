@@ -33,6 +33,7 @@
 # They are currently unattainable, but will be from the planned blue boss.
 # Today, I'm really lazy to design.
 # v1.4.2.2: Fixed a bug with the ammo value and nerfed ammo gain.
+# v1.4.2.2.1: No bugfixes, just a nerf in ammo gain.
 from random import randint
 import time
 print "TheEnderCavalier presents..."
@@ -41,7 +42,7 @@ print "From Brad Sparks' classroom..."
 time.sleep(3)
 print "BOX: ZOMBIE EDITION"
 time.sleep(3)
-print "v1.4.2"
+print "v1.4.2.2.1"
 time.sleep(3)
 print "Each wave, you open the box."
 print "The box gives you gems, which you use to buy ammo."
@@ -149,7 +150,7 @@ while alive==True:
     time.sleep(2)
     topaz+=(100*everstone)+(75*diamond)+(50*emerald)+(20*ruby)+(10*amethyst)+(5*sapphire)
     print "Final worth:", topaz
-    ammo=topaz*int((randint(800,(1000*ammo2))/100.0))
+    ammo=topaz*int((randint(600,(1000*ammo2))/100.0))
     time.sleep(1)
     print "By selling each topaz you gained", ammo, "ammo."
     time.sleep(1)
