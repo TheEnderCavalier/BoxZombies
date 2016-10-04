@@ -34,6 +34,8 @@
 # Today, I'm really lazy to design.
 # v1.4.2.2: Fixed a bug with the ammo value and nerfed ammo gain.
 # v1.4.2.2.1: No bugfixes, just a nerf in ammo gain.
+# v1.5: I MADE ANOTHER BUSSES
+# HAZ PUN
 from random import randint
 import time
 print "TheEnderCavalier presents..."
@@ -42,7 +44,7 @@ print "From Brad Sparks' classroom..."
 time.sleep(3)
 print "BOX: ZOMBIE EDITION"
 time.sleep(3)
-print "v1.4.2.2.1"
+print "v1.5"
 time.sleep(3)
 print "Each wave, you open the box."
 print "The box gives you gems, which you use to buy ammo."
@@ -62,15 +64,24 @@ power2=1
 while alive==True:
     wave+=1
     print "Wave", wave
-    if chance2>1 or ammo2>1:
+    if chance2>1 or ammo2>1 or damage2>1 or power2>1:
         time.sleep(2)
         print "Perks:"
         if ammo2>1:
             print "Ammo+ lv", ammo2
         if chance2>1:
             print "Chance+ lv", chance2
+        if damage2>1:
+            print "Damage+ lv", damage2
+        if power2>1:
+            print "Power+ lv", power2
     time.sleep(3)
+    clash=0
     x=0
+    killvalue=0
+    hp=100
+    chancechance=0
+    chancechancechance=0
     perk=0
     boss2=0
     grenade=0
@@ -179,7 +190,7 @@ while alive==True:
             boss+=1
             print "Out of the smoke, a boss appears!"
             time.sleep(3)
-            boss2=randint(1,1)
+            boss2=randint(1,2)
             if boss2==1:
                 print "It's eyes glow red in a fury and it charges at you."
                 time.sleep(2)
@@ -229,6 +240,60 @@ while alive==True:
                     print "Your dead body is found with", ammotot, "bullets to spare."
                     ammo=0
                     alive=False
+            elif boss2==2:
+                print "It's eyes glow blue. He takes out a pistol, somehow."
+                time.sleep(2)
+                while clash==0:
+                    print "You both empty a clip."
+                    ammo-=12
+                    time.sleep(0.25)
+                    chancechance=randint(1,100)
+                    if chancechance>=95:
+                        print "You kill it with a good headshot."
+                        time.sleep(2)
+                        bosskill=1
+                        clash=1
+                    elif chancechance>=65:
+                        chancechancechance=randint(100,1200)/100
+                        killvalue=3*chancechancechance
+                        hp-=killvalue
+                        print "You hit it", killvalue, "times."
+                        time.sleep(0.25)
+                    elif chancechance>=15:
+                        print "Your aim fails you."
+                        time.sleep(0.25)
+                    else:
+                        print "Your aim fails you."
+                        time.sleep(0.25)
+                        print "And you die."
+                        time.sleep(1.75)
+                        time.sleep(1)
+                        print "Your dead body is found with", ammotot, "bullets to spare."
+                        ammo=0
+                        alive=False
+                if bosskill==1:
+                    print "A winner is you!"
+                    boss+=10
+                    time.sleep(2)
+                    print "You take a amulet of pure crystal of its neck. You feel an increase in power."
+                    time.sleep(2)
+                    while True:
+                        print "3: Damage+"
+                        print "4: Power+"
+                        perk=raw_input("Choice: ")
+                        if perk=="3" or perk=="4":
+                            if perk=="3":
+                                print "Your aim improves. You near a constant bullseye."
+                                damage2+=1
+                                time.sleep(2)
+                                break
+                            else:
+                                print "The intensity of anything that touches you increases."
+                                power2+=1
+                                time.sleep(2)
+                                break
+                        else:
+                            perk=0
         if alive==True:
             print "You have", ammotot, "ammo left."
     else:
