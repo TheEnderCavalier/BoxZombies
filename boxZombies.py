@@ -36,6 +36,9 @@
 # v1.4.2.2.1: No bugfixes, just a nerf in ammo gain.
 # v1.5: I MADE ANOTHER BUSSES
 # HAZ PUN
+# v1.5.1: Re-balancing, blue boss bugfix.
+# Mainly, increase in gem price.
+# The onyx gem has been introduced as +1. Topaz is now +3, but can still give last box.
 from random import randint
 import time
 print "TheEnderCavalier presents..."
@@ -44,15 +47,20 @@ print "From Brad Sparks' classroom..."
 time.sleep(3)
 print "BOX: ZOMBIE EDITION"
 time.sleep(3)
-print "v1.5"
+print "v1.5.1"
 time.sleep(3)
 print "Each wave, you open the box."
+time.sleep(0.05)
 print "The box gives you gems, which you use to buy ammo."
+time.sleep(0.05)
 print "Then zombies come and try to kill you."
+time.sleep(0.05)
 print "You one-tap them, and if you can one-tap them all, you survive."
+time.sleep(0.05)
 print "Somehow getting an everstone buys you an grenade which can waveclear."
+time.sleep(0.05)
 print "Try to survive a lot of waves for a high score!"
-time.sleep(10)
+time.sleep(9.75)
 ammotot=0
 wave=0
 alive=True
@@ -95,42 +103,45 @@ while alive==True:
     rare=0
     bosskill=0
     chance=0
+    onyx=0
     print "The box opens."
     time.sleep(1)
     while x<10:
         tiernum=randint(1,((499*(chance2))+(wave*(chance2*2))))
         tier=0
         if tiernum>=4000:
-            tier=7
+            tier=8
         elif tiernum>=1000:
-            tier=6
+            tier=7
             rare=1
         elif tiernum>=500:
-            tier=5
+            tier=6
             rare=1
         elif tiernum>=450:
+            tier=5
+            rare=1
+        elif tiernum>=300:
             tier=4
             rare=1
-        elif tiernum>=400:
+        elif tiernum>=250:
             tier=3
             rare=1
-        elif tiernum>=350:
+        elif tiernum>=125:
             tier=2
-            rare=1
         else:
             if rare==0 and x==9:
                 tiernum=randint(0,100)
                 if tiernum>=100:
-                    tier=5
+                    tier=6
                     rare=1
                 elif tiernum>=98:
-                    tier=4
+                    tier=5
                     rare=1
                 elif tiernum>=95:
-                    tier=3
+                    tier=4
                     rare=1
                 else:
-                    tier=2
+                    tier=3
                     rare=1
             else:
                 tier=1
@@ -141,27 +152,30 @@ while alive==True:
             print "DIAMOND! +75 points"
             diamond+=1
         elif tier==5:
-            print "Emerald! +50 points"
+            print "Emerald! +65 points"
             emerald+=1
         elif tier==4:
-            print "Ruby! +20 points"
+            print "Ruby! +35 points"
             ruby+=1
         elif tier==3:
-            print "Amethyst. +10 points"
+            print "Amethyst. +15 points"
             amethyst+=1
         elif tier==2:
-            print "Sapphire. +5 points"
+            print "Sapphire. +10 points"
             sapphire+=1
-        else:
-            print "Topaz... +1 point"
+        elif tier==2:
+            print "Topaz... +3 points"
             topaz+=1
+        else:
+            print "Onyx... +1 point"
+            onyx+=1
         x+=1
         time.sleep(0.1)
-    print "Converting all into topaz..."
+    print "Converting all into onyx..."
     time.sleep(2)
-    topaz+=(100*everstone)+(75*diamond)+(50*emerald)+(20*ruby)+(10*amethyst)+(5*sapphire)
+    onyx+=(100*everstone)+(75*diamond)+(65*emerald)+(35*ruby)+(15*amethyst)+(10*sapphire)+(3*topaz)
     print "Final worth:", topaz
-    ammo=topaz*int((randint(600,(1000*ammo2))/100.0))
+    ammo=onyx*int((randint(750,(1125*ammo2))/100.0))
     time.sleep(1)
     print "By selling each topaz you gained", ammo, "ammo."
     time.sleep(1)
@@ -174,7 +188,7 @@ while alive==True:
     time.sleep(2)
     print "Zombies are closing in on your location!"
     time.sleep(2)
-    zombie=int(((randint(500,2000)/10.0)*(wave))/(damage2))
+    zombie=int(((randint(750,2250)/10.0)*(wave))/(damage2))
     print "On closer inspection, you see that", (zombie*damage2), "zombies have appeared."
     time.sleep(2)
     if ammotot>=zombie:
@@ -259,6 +273,8 @@ while alive==True:
                         hp-=killvalue
                         print "You hit it", killvalue, "times."
                         time.sleep(0.25)
+                        if hp<=0:
+                            break
                     elif chancechance>=15:
                         print "Your aim fails you."
                         time.sleep(0.25)
@@ -271,6 +287,7 @@ while alive==True:
                         print "Your dead body is found with", ammotot, "bullets to spare."
                         ammo=0
                         alive=False
+                        clash=1
                 if bosskill==1:
                     print "A winner is you!"
                     boss+=10
