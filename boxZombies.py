@@ -39,6 +39,7 @@
 # v1.5.1: Re-balancing, blue boss bugfix.
 # Mainly, increase in gem price.
 # The onyx gem has been introduced as +1. Topaz is now +3, but can still give last box.
+# v1.5.1.1: Bugfixes, and what I forgot in rebalancing.
 from random import randint
 import time
 print "TheEnderCavalier presents..."
@@ -47,7 +48,7 @@ print "From Brad Sparks' classroom..."
 time.sleep(3)
 print "BOX: ZOMBIE EDITION"
 time.sleep(3)
-print "v1.5.1"
+print "v1.5.1.1"
 time.sleep(3)
 print "Each wave, you open the box."
 time.sleep(0.05)
@@ -104,6 +105,7 @@ while alive==True:
     bosskill=0
     chance=0
     onyx=0
+    gungungungungun="pistol."
     print "The box opens."
     time.sleep(1)
     while x<10:
@@ -146,22 +148,22 @@ while alive==True:
             else:
                 tier=1
         if tier==7:
-            print "EVERSTONE!!! +100 points"
+            print "EVERSTONE!!! +1000 POINTS"
             everstone+=1
         elif tier==6:   
-            print "DIAMOND! +75 points"
+            print "DIAMOND! +150 points"
             diamond+=1
         elif tier==5:
-            print "Emerald! +65 points"
+            print "Emerald! +75 points"
             emerald+=1
         elif tier==4:
-            print "Ruby! +35 points"
+            print "Ruby! +25 points"
             ruby+=1
         elif tier==3:
             print "Amethyst. +15 points"
             amethyst+=1
         elif tier==2:
-            print "Sapphire. +10 points"
+            print "Sapphire. +7 points"
             sapphire+=1
         elif tier==2:
             print "Topaz... +3 points"
@@ -173,14 +175,28 @@ while alive==True:
         time.sleep(0.1)
     print "Converting all into onyx..."
     time.sleep(2)
-    onyx+=(100*everstone)+(75*diamond)+(65*emerald)+(35*ruby)+(15*amethyst)+(10*sapphire)+(3*topaz)
-    print "Final worth:", topaz
+    onyx+=(1000*everstone)+(150*diamond)+(75*emerald)+(25*ruby)+(15*amethyst)+(7*sapphire)+(3*topaz)
+    print "Final worth:", onyx
     ammo=onyx*int((randint(750,(1125*ammo2))/100.0))
     time.sleep(1)
     print "By selling each topaz you gained", ammo, "ammo."
     time.sleep(1)
     ammotot+=ammo
-    print "You now have", ammotot, "ammo for your pistol."
+    if ammotot>=1000000000:
+        gungungungungun="the insane contraption you have built out of 36 miniguns which mauls anything in your path."
+        grenade = (randint(500, 1000)) * power2
+        ammotot += grenade
+    elif ammotot>=25000:
+        gungungungungun="your minigun."
+    elif ammotot>=10000:
+        gungungungungun="your heavy machine gun."
+    elif ammotot>=2000:
+        gungungungungun="your assault rifle."
+    elif ammotot>=1000:
+        gungungungungun="your SMG."
+    else:
+        gungungungungun="your pistol."
+    print "You now have", ammotot, "ammo for", gungungungungun
     if everstone>=1:
         print "One arms dealer gives you a grenade which should take out a well-sized cluster."
         grenade=(randint(500,1000))*power2
@@ -259,19 +275,19 @@ while alive==True:
                 time.sleep(2)
                 while clash==0:
                     print "You both empty a clip."
-                    ammo-=12
+                    ammo-=30
                     time.sleep(0.25)
                     chancechance=randint(1,100)
-                    if chancechance>=95:
+                    if chancechance>=99:
                         print "You kill it with a good headshot."
                         time.sleep(2)
                         bosskill=1
                         clash=1
-                    elif chancechance>=65:
-                        chancechancechance=randint(100,1200)/100
+                    elif chancechance>=40:
+                        chancechancechance=randint(100,3000)/100
                         killvalue=3*chancechancechance
                         hp-=killvalue
-                        print "You hit it", killvalue, "times."
+                        print "You hit it", killvalue/3, "times."
                         time.sleep(0.25)
                         if hp<=0:
                             break
