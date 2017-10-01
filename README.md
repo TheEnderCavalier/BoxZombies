@@ -2,7 +2,7 @@
 A tiny project that I made during my programming class to reinforce my basic coding skills and also find Github.
 
 BoxZombies is a game about zombies and colored gems.
-Can you get the fabled everstone and set a high score?
+It's something I'm quite proud of for my skill at the time.
 
 In the game, you fight through waves.
 Each wave consists of the opening of a box and gem looting (gain), a zombie survival (fight), and a potential boss (boss).
