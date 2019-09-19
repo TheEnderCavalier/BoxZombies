@@ -1,10 +1,4 @@
 # BoxZombies
-A tiny project that I made during my programming class to reinforce my basic coding skills and also find Github.
+This project was originally created as a simple application of my basic skills in Python; however, I have decided to fully rework it to refresh my skills in Python so I can TA the programming class I took 4 years ago as well as I can.
 
-BoxZombies is a game about zombies and colored gems.
-It's something I'm quite proud of for my skill at the time.
-
-In the game, you fight through waves.
-Each wave consists of the opening of a box and gem looting (gain), a zombie survival (fight), and a potential boss (boss).
-By the end of the wave, you will either gain or lose ammo.
-There's no way to win, but not losing for a while involves getting a good gem upkeep and tons of ammo.
+The game is purely automated.
