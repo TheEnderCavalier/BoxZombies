@@ -1,5 +1,5 @@
 # BoxZombies
-A tiny project that I made during my programming class to reinforce my basic coding skills and also find Github.
+A tiny project that I made during my programming class to reinforce my basic coding skills and learn Github.
 
 BoxZombies is a game about zombies and colored gems.
 It's something I'm quite proud of for my skill at the time.
